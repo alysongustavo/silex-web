@@ -38,4 +38,34 @@ class UserService
 
     }
 
+    public function save(User $user){
+
+        $id = (int) $user->getId();
+
+        if($id > 0){
+            $userFind = $this->em->getRepository(User::class)->find(0);
+
+            if($userFind != null){
+                $userFind->hydrate($user);
+                $this->em->persist($userFind);
+                $this->em->flush();
+            }
+        }else{
+
+            $this->em->persist($user);
+            $this->em->flush();
+        }
+
+
+    }
+
+    public function remove($id){
+        $user = $this->em->getReference(User::class, $id);
+
+        if($user != null){
+            $this->em->remove($user);
+            $this->em->flush();
+        }
+    }
+
 }

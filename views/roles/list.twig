@@ -1,0 +1,29 @@
+{% extends "templates/layout.twig" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Listagem Papeis</h1>
+
+            <div class="row">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for role in roles  %}
+                        <tr>
+                            <th scope="row">{{ role.id }}</th>
+                            <td>{{ role.name }}</td>
+                            <td>Visualizar</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

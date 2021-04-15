@@ -60,6 +60,11 @@ class User
         $hydrator->hydrate($data, $this);
     }
 
+    public function hydrate(User $user){
+        $hydratorObject = new ClassMethodsHydrator();
+        return $hydratorObject->hydrate($user->toArray(), $this);
+    }
+
     public function toArray(){
         return (new ClassMethodsHydrator())->extract($this);
     }
