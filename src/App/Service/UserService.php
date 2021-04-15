@@ -49,11 +49,13 @@ class UserService
                 $userFind->hydrate($user);
                 $this->em->persist($userFind);
                 $this->em->flush();
+                return $userFind;
             }
         }else{
 
             $this->em->persist($user);
             $this->em->flush();
+            return $user;
         }
 
 

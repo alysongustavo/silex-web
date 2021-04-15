@@ -154,9 +154,9 @@ class User
      * @param ArrayCollection $roles
      * @return User
      */
-    public function setRoles($roles)
+    public function addRole($role)
     {
-        $this->roles = $roles;
+        $this->roles->add($role);
         return $this;
     }
 

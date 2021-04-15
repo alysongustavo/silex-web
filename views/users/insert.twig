@@ -4,27 +4,27 @@
         <div class="col-md-12">
             <h1>Cadastrar Usuários</h1>
 
-            <form>
+            <form action="{{ path('user-add') }}" method="post">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Nome</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+                    <label for="name">Nome</label>
+                    <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Enter name">
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect2">Role</label>
-                    <select multiple class="form-control" id="exampleFormControlSelect2">
+                    <label for="roles">Role</label>
+                    <select multiple class="form-control" id="roles" name="roles">
                         {% for role in roles %}
                         <option value="{{ role.id }}">{{ role.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
