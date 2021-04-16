@@ -19,7 +19,15 @@ class UserService
     }
 
     public function findAll(){
-        return $this->em->getRepository(User::class)->findAll();
+        $users = $this->em->getRepository(User::class)->findAll();
+
+        return $users;
+    }
+
+    public function findUserAggregate($id){
+        $users = $this->em->getRepository(User::class)->findAllUserAggregate($id);
+
+        return $users;
     }
 
     public function find($id){

@@ -46,10 +46,35 @@ class Address
      * @ORM\Column(name="zip_code")
      */
     private $zipCode;
+
+    /**
+     * @var string
+     * @ORM\Column(name="city", type="string", length=80, nullable=false)
+     */
     private $city;
+
+    /**
+     * @var string
+     * @ORM\Column(name="district", type="string", length=80, nullable=false)
+     */
     private $district;
+
+    /**
+     * @var string
+     * @ORM\Column(name="street", type="string", length=100, nullable=false)
+     */
     private $street;
+
+    /**
+     * @var string
+     * @ORM\Column(name="number", type="integer", length=5, nullable=false)
+     */
     private $number;
+
+    /**
+     * @var string
+     * @ORM\Column(name="status", type="integer", length=1, nullable=false)
+     */
     private $status;
 
     /**

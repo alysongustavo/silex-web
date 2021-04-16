@@ -1,0 +1,120 @@
+{% extends "templates/layout.twig" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Detalhe Usuário</h1><br/>
+
+
+            <div class="row">
+                <h3>Dados Básicos</h3><br/>
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <th scope="row">#</th>
+                        <td>{{ user.id }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nome</th>
+                        <td>{{ user.name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="col-md-12">
+            <div class="row">
+                <h3>Dados Informações Pessoais</h3><br/>
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <th scope="row">#</th>
+                        <td>{{ user.personalInformation.ID }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">CPF</th>
+                        <td>{{ user.personalInformation.cpf }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">RG</th>
+                        <td>{{ user.personalInformation.rg }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="row">
+                <h3>Papeis do Usuário</h3>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Ação</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for role in user.getRoles()  %}
+                        <tr>
+                            <th scope="row">{{ role.id }}</th>
+                            <td>{{ role.name }}</td>
+                            <td>Visualizar</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="col-md-12">
+            <div class="row">
+                <h3>Endereços Usuário</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">UF</th>
+                            <th scope="col">Zip Code</th>
+                            <th scope="col">City</th>
+                            <th scope="col">District</th>
+                            <th scope="col">Street</th>
+                            <th scope="col">Number</th>
+                            <th scope="col">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for address in user.getAddress()  %}
+                            <tr>
+                                <th scope="row">{{ address.id }}</th>
+                                <td>{{ address.name }}</td>
+                                <td>{{ address.uf }}</td>
+                                <td>{{ address.zipCode }}</td>
+                                <td>{{ address.city }}</td>
+                                <td>{{ address.district }}</td>
+                                <td>{{ address.street }}</td>
+                                <td>{{ address.number }}</td>
+                                <td>Visualizar</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="row">
+                    <a href="{{ path('user-list') }}" class="btn btn-primary">Voltar</a>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

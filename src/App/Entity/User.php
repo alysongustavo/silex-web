@@ -44,6 +44,12 @@ class User
     private $password;
 
     /**
+     * One Customer has One Cart.
+     * @ORM\OneToMany(targetEntity="App\Entity\Address", mappedBy="user", cascade={"persist"})
+     */
+    private $address;
+
+    /**
      * @var ArrayCollection
      * @ORM\ManyToMany(targetEntity="App\Entity\Role")
      * @ORM\JoinTable(name="user_role",
@@ -52,9 +58,16 @@ class User
      */
     private $roles;
 
+    /**
+     * One Customer has One Cart.
+     * @ORM\OneToOne(targetEntity="App\Entity\PersonalInformation", mappedBy="user", cascade={"persist"})
+     */
+    private $personalInformation;
+
     public function __construct(array $data)
     {
         $this->roles = new ArrayCollection();
+        $this->address = new ArrayCollection();
 
         $hydrator = new ClassMethodsHydrator();
         $hydrator->hydrate($data, $this);
@@ -143,6 +156,24 @@ class User
     }
 
     /**
+     * @return mixed
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param ArrayCollection $roles
+     * @return User
+     */
+    public function addAddress($endereco)
+    {
+        $this->address->add($endereco);
+        return $this;
+    }
+
+    /**
      * @return ArrayCollection
      */
     public function getRoles()
@@ -157,6 +188,24 @@ class User
     public function addRole($role)
     {
         $this->roles->add($role);
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPersonalInformation()
+    {
+        return $this->personalInformation;
+    }
+
+    /**
+     * @param mixed $personalInformation
+     * @return User
+     */
+    public function setPersonalInformation($personalInformation)
+    {
+        $this->personalInformation = $personalInformation;
         return $this;
     }
 
